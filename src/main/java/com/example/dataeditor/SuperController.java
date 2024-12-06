@@ -14,7 +14,14 @@ public class SuperController {
     public Button listButton;
     public Button tableButton;
 
+    boolean filmsLoaded = false;
+
     public void initialize() throws Exception {
+        if (!filmsLoaded) {
+            Film.readAllData();
+            filmsLoaded = true;
+        }
+
         sceneChoiceBox.getItems().add("Text Fields");
         sceneChoiceBox.getItems().add("List");
         sceneChoiceBox.getItems().add("Table");

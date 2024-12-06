@@ -14,6 +14,10 @@ public class Controller2 extends SuperController {
         sceneChoiceBox.setValue("List");
         listButton.setDisable(true);
         listButton.setVisible(false);
+
+        for (Film eachFilm : Film.getAllFilms()) {
+            theListView.getItems().add(eachFilm.toString());
+        }
     }
 
 }
