@@ -1,7 +1,5 @@
 package com.example.dataeditor;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 
 public class Controller2 extends SuperController {
@@ -15,9 +13,12 @@ public class Controller2 extends SuperController {
         listButton.setDisable(true);
         listButton.setVisible(false);
 
+        theListView.getItems().clear();
         for (Film eachFilm : Film.getAllFilms()) {
             theListView.getItems().add(eachFilm.toString());
         }
+
+        System.out.println("Controller2 # of objects: " + Film.getAllFilms().size());
     }
 
 }

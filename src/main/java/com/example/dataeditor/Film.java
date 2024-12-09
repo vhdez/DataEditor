@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Film extends Movie {
     private int peak;
+
+    private static boolean filmsRead = false;
     private static ArrayList<Film> allFilms = new ArrayList<Film>();
 
     public Film(int rank, String title, long revenue, LocalDate releaseDate, int peak) {
@@ -30,6 +32,7 @@ public class Film extends Movie {
         Film.allFilms = allFilms;
     }
 
+    // this is a GETTER with NO field.  The TableView needs the getter to get data from the object.
     public String getToString() {
         return this.toString();
     }
@@ -46,6 +49,13 @@ public class Film extends Movie {
     }
 
     static void readAllData() throws Exception {
+        if (filmsRead) {
+            // Data already read, nothing to do.
+            return;
+        }
+
+        System.out.println("READING FILMS");
+
         File dataFile = new File("src/main/FilmsDataFromWikipedia");
         Scanner textScanner = new Scanner(dataFile);
         // Scan the whole data file LINE-by-LINE \n (1 row at at time)
@@ -97,6 +107,8 @@ public class Film extends Movie {
             Film newFilm = new Film(rank, title, revenue, releaseDate, peak);
             allFilms.add(newFilm);
         }
+
+        filmsRead = true;
     }
 
     static void describeAllFilms() {

@@ -25,6 +25,8 @@ public class Controller1 extends SuperController {
         rankText.setText(String.valueOf(firstFilm.getRank()));
         titleText.setText(String.valueOf(firstFilm.getTitle()));
         fullText.setText(String.valueOf(firstFilm));
+
+        System.out.println("Controller1 # of objects: " + Film.getAllFilms().size());
     }
 
     public void previousData() {

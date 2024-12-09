@@ -5,7 +5,7 @@ public class Main {
         Film.readAllData();
         Film.describeAllFilms();
         System.out.println("Newest film on list is: "+ Film.newest());
-
+        System.out.println("# of objects: " + Film.getAllFilms().size());
         /*
         // 1	1	Avatar	$2,923,706,026	2009	[# 1][# 2]
         Date date1 = new Date(109,0,1);

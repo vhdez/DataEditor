@@ -42,9 +42,11 @@ public class Controller3 extends SuperController {
                     filmFromTableRow.setTitle(t.getNewValue());
                 });
 
+        theTable.getItems().clear();
         for (Film eachFilm : Film.getAllFilms()) {
             theTable.getItems().add(eachFilm);
         }
 
+        System.out.println("Controller3 # of objects: " + Film.getAllFilms().size());
     }
 }
