@@ -3,16 +3,13 @@ package com.example.dataeditor;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldListCell;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
-import javafx.util.converter.DefaultStringConverter;
 
 public class Controller2 extends SuperController {
     // This controls list view
     public ListView<Film> theListView;
     public TextField titleEditor;
     public TextField rankEditor;
-    public Film currentFilm;
 
     public void initialize() throws Exception {
         super.initialize();
@@ -49,23 +46,13 @@ public class Controller2 extends SuperController {
                     // newValue can be null if nothing IS NOW selected
                     System.out.println("ListView select oldValue: " + oldValue);
                     System.out.println("ListView select newValue: " + newValue);
-                    rankEditor.setText(String.valueOf(newValue.getRank()));
-                    titleEditor.setText(String.valueOf(newValue.getTitle()));
-                    currentFilm = newValue;
-                   /*
-                    String newText = newValue;
-                    if (newText != null) {
-                        // Populate controls with selected Person
-                        firstnameTextField.setText(selectedPerson.getFirstname());
-                        lastnameTextField.setText(selectedPerson.getLastname());
-                        notesTextArea.setText(selectedPerson.getNotes());
+                    if (newValue != null) {
+                        rankEditor.setText(String.valueOf(newValue.getRank()));
+                        titleEditor.setText(String.valueOf(newValue.getTitle()));
                     } else {
-                        firstnameTextField.setText("");
-                        lastnameTextField.setText("");
-                        notesTextArea.setText("");
+                        rankEditor.setText("");
+                        titleEditor.setText("");
                     }
-
-                    */
                 });
 
         // This makes the ListView's ObservableList contain the SAME objects as the original ArrayList
@@ -75,11 +62,15 @@ public class Controller2 extends SuperController {
     }
 
     public void editRank() {
-        currentFilm.setRank(Integer.parseInt(rankEditor.getText()));
+        Film selectedFilm = theListView.getSelectionModel().getSelectedItem();
+        selectedFilm.setRank(Integer.parseInt(rankEditor.getText()));
+        theListView.refresh();
     }
 
     public void editTitle() {
-        currentFilm.setTitle(titleEditor.getText());
+        Film selectedFilm = theListView.getSelectionModel().getSelectedItem();
+        selectedFilm.setTitle(titleEditor.getText());
+        theListView.refresh();
     }
 
 }

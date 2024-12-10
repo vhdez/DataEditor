@@ -11,7 +11,7 @@ public class Controller1 extends SuperController {
     public TextArea fullText;
     public Button nextButton;
     public Button previousButton;
-    int currentFilmNumber;
+    static int currentFilmNumber = 0;
 
     public void initialize() throws Exception {
         super.initialize();
@@ -20,7 +20,6 @@ public class Controller1 extends SuperController {
         textButton.setDisable(true);
         textButton.setVisible(false);
 
-        currentFilmNumber = 0;
         Film firstFilm = Film.getAllFilms().get(currentFilmNumber);
         rankText.setText(String.valueOf(firstFilm.getRank()));
         titleText.setText(String.valueOf(firstFilm.getTitle()));

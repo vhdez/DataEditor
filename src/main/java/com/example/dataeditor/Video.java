@@ -58,6 +58,4 @@ public class Video extends Movie {
     int averageBluray() {
         return 0;
     }
-
-
 }
