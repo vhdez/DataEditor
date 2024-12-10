@@ -27,21 +27,21 @@ public class SuperController {
 
     public void switchToTextFieldView() throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(DataEditor.class.getResource("View1.fxml"));
-        Scene textFieldScene = new Scene(fxmlLoader.load(), 600, 400);
+        Scene textFieldScene = new Scene(fxmlLoader.load(), 1000, 400);
         Stage mainStage = (Stage)textButton.getScene().getWindow();
         mainStage.setScene(textFieldScene);
     }
 
     public void switchToListView() throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(DataEditor.class.getResource("View2.fxml"));
-        Scene listScene = new Scene(fxmlLoader.load(), 600, 400);
+        Scene listScene = new Scene(fxmlLoader.load(), 1000, 400);
         Stage mainStage = (Stage)textButton.getScene().getWindow();
         mainStage.setScene(listScene);
     }
 
     public void switchToTableView() throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(DataEditor.class.getResource("View3.fxml"));
-        Scene tableScene = new Scene(fxmlLoader.load(), 600, 400);
+        Scene tableScene = new Scene(fxmlLoader.load(), 1000, 400);
         Stage mainStage = (Stage)textButton.getScene().getWindow();
         mainStage.setScene(tableScene);
     }

@@ -29,24 +29,31 @@ public class Controller3 extends SuperController {
         rankColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         titleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        // This causes TableView's edited values to stored in original ArrayList objects
         rankColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<Film, Integer> t) -> {
-                    int tableRow = t.getTablePosition().getRow();
-                    Film filmFromTableRow = t.getTableView().getItems().get(tableRow);
-                    filmFromTableRow.setRank(t.getNewValue());
+                    int selectedRow = t.getTablePosition().getRow();
+                    Film selectedFilm = t.getTableView().getItems().get(selectedRow);
+                    selectedFilm.setRank(t.getNewValue());
                 });
         titleColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<Film, String> t) -> {
-                    int tableRow = t.getTablePosition().getRow();
-                    Film filmFromTableRow = t.getTableView().getItems().get(tableRow);
-                    filmFromTableRow.setTitle(t.getNewValue());
+                    int selectedRow = t.getTablePosition().getRow();
+                    Film selectedFilm = t.getTableView().getItems().get(selectedRow);
+                    selectedFilm.setTitle(t.getNewValue());
                 });
 
-        theTable.getItems().clear();
+        theTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    // oldValue can be null if nothing WAS selected
+                    // newValue can be null if nothing IS NOW selected
+                    System.out.println("TableView select oldValue: " + oldValue);
+                    System.out.println("TableView select newValue: " + newValue);
+                });
+
+                    // This makes the TableView's ObservableList contain the SAME objects as the original ArrayList
         for (Film eachFilm : Film.getAllFilms()) {
             theTable.getItems().add(eachFilm);
         }
-
-        System.out.println("Controller3 # of objects: " + Film.getAllFilms().size());
     }
 }

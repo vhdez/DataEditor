@@ -6,18 +6,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dataeditor.Controller3">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dataeditor.Controller3">
    <children>
-      <TableView fx:id="theTable" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="338.0" prefWidth="567.0">
+      <TableView fx:id="theTable" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="338.0" prefWidth="971.0">
         <columns>
-          <TableColumn fx:id="rankColumn" prefWidth="75.0" text="Rank" />
-          <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Title" />
-            <TableColumn fx:id="fullTextColumn" editable="false" prefWidth="416.0" text="Full Text" />
+          <TableColumn fx:id="rankColumn" prefWidth="35.0" text="Rank" />
+          <TableColumn fx:id="titleColumn" prefWidth="175.0" text="Title" />
+            <TableColumn fx:id="fullTextColumn" editable="false" prefWidth="356.0" text="Full Text" />
         </columns>
       </TableView>
-      <Button fx:id="tableButton" layoutX="533.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToTableView" style="-fx-background-color: blue;" text="Table" textFill="WHITE" />
-      <Button fx:id="listButton" layoutX="485.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToListView" style="-fx-background-color: blue;" text="List" textFill="WHITE" />
-      <Button fx:id="textButton" layoutX="427.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToTextFieldView" style="-fx-background-color: blue;" text="Text" textFill="WHITE" />
-      <ChoiceBox fx:id="sceneChoiceBox" layoutX="269.0" layoutY="360.0" onDragDetected="#changeScene" prefWidth="150.0" style="-fx-background-color: blue;" />
+      <Button fx:id="tableButton" layoutX="937.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToTableView" style="-fx-background-color: blue;" text="Table" textFill="WHITE" />
+      <Button fx:id="listButton" layoutX="893.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToListView" style="-fx-background-color: blue;" text="List" textFill="WHITE" />
+      <Button fx:id="textButton" layoutX="841.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToTextFieldView" style="-fx-background-color: blue;" text="Text" textFill="WHITE" />
+      <ChoiceBox fx:id="sceneChoiceBox" layoutX="683.0" layoutY="360.0" onDragDetected="#changeScene" prefWidth="150.0" style="-fx-background-color: blue;" />
    </children>
 </Pane>

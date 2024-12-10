@@ -11,7 +11,7 @@ public class Controller1 extends SuperController {
     public TextArea fullText;
     public Button nextButton;
     public Button previousButton;
-    int currentFilm;
+    int currentFilmNumber;
 
     public void initialize() throws Exception {
         super.initialize();
@@ -20,37 +20,40 @@ public class Controller1 extends SuperController {
         textButton.setDisable(true);
         textButton.setVisible(false);
 
-        currentFilm = 0;
-        Film firstFilm = Film.getAllFilms().get(currentFilm);
+        currentFilmNumber = 0;
+        Film firstFilm = Film.getAllFilms().get(currentFilmNumber);
         rankText.setText(String.valueOf(firstFilm.getRank()));
         titleText.setText(String.valueOf(firstFilm.getTitle()));
         fullText.setText(String.valueOf(firstFilm));
-
-        System.out.println("Controller1 # of objects: " + Film.getAllFilms().size());
     }
 
     public void previousData() {
-        if (currentFilm > 0) {
-            currentFilm = currentFilm - 1;
+        if (currentFilmNumber > 0) {
+            currentFilmNumber = currentFilmNumber - 1;
         } else {
-            currentFilm = Film.getAllFilms().size()-1;
+            currentFilmNumber = Film.getAllFilms().size()-1;
         }
-        Film prevFilm = Film.getAllFilms().get(currentFilm);
+        Film prevFilm = Film.getAllFilms().get(currentFilmNumber);
         rankText.setText(String.valueOf(prevFilm.getRank()));
         titleText.setText(String.valueOf(prevFilm.getTitle()));
         fullText.setText(String.valueOf(prevFilm));
     }
 
     public void nextData() {
-        if (currentFilm < Film.getAllFilms().size() - 2) {
-            currentFilm = currentFilm + 1;
+        if (currentFilmNumber < Film.getAllFilms().size() - 2) {
+            currentFilmNumber = currentFilmNumber + 1;
         } else {
-            currentFilm = 0;
+            currentFilmNumber = 0;
         }
-        Film nextFilm = Film.getAllFilms().get(currentFilm);
+        Film nextFilm = Film.getAllFilms().get(currentFilmNumber);
         rankText.setText(String.valueOf(nextFilm.getRank()));
         titleText.setText(String.valueOf(nextFilm.getTitle()));
         fullText.setText(String.valueOf(nextFilm));
     }
 
+    public void titleChanged() {
+        String newTitle = titleText.getText();
+        Film currentFilm = Film.getAllFilms().get(currentFilmNumber);
+        currentFilm.setTitle(newTitle);
+    }
 }
