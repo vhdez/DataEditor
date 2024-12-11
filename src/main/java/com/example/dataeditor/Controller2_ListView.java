@@ -5,7 +5,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.util.StringConverter;
 
-public class Controller2 extends SuperController {
+public class Controller2_ListView extends SuperController {
     // This controls list view
     public ListView<Film> theListView;
     public TextField titleEditor;
@@ -63,14 +63,17 @@ public class Controller2 extends SuperController {
 
     public void editRank() {
         Film selectedFilm = theListView.getSelectionModel().getSelectedItem();
-        selectedFilm.setRank(Integer.parseInt(rankEditor.getText()));
-        theListView.refresh();
+        if (selectedFilm != null) {
+            selectedFilm.setRank(Integer.parseInt(rankEditor.getText()));
+            theListView.refresh();
+        }
     }
 
     public void editTitle() {
         Film selectedFilm = theListView.getSelectionModel().getSelectedItem();
-        selectedFilm.setTitle(titleEditor.getText());
-        theListView.refresh();
+        if (selectedFilm != null) {
+            selectedFilm.setTitle(titleEditor.getText());
+            theListView.refresh();
+        }
     }
-
 }

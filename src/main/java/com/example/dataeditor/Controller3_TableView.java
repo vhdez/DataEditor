@@ -6,7 +6,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
 
-public class Controller3 extends SuperController {
+public class Controller3_TableView extends SuperController {
     public TableView<Film> theTable;
     public TableColumn<Film, Integer> rankColumn;
     public TableColumn<Film, String> titleColumn;

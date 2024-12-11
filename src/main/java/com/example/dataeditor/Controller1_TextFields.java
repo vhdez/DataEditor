@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class Controller1 extends SuperController {
+public class Controller1_TextFields extends SuperController {
     // This controls text fields and buttons
     public TextField rankText;
     public TextField titleText;
@@ -54,5 +54,7 @@ public class Controller1 extends SuperController {
         String newTitle = titleText.getText();
         Film currentFilm = Film.getAllFilms().get(currentFilmNumber);
         currentFilm.setTitle(newTitle);
+        // update fullText because Title was edited
+        fullText.setText(String.valueOf(currentFilm));
     }
 }

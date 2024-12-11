@@ -1,6 +1,6 @@
 package com.example.dataeditor;
 
-import java.io.File;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -48,13 +48,12 @@ public class Film extends Movie {
         return 0;
     }
 
-    static void readAllData() throws Exception {
+    static void importDataOnce() throws Exception {
         if (filmsRead) {
             // Data already read, nothing to do.
             return;
         }
-
-        System.out.println("READING FILMS");
+        System.out.println("IMPORTING FILMS");
 
         File dataFile = new File("src/main/FilmsDataFromWikipedia");
         Scanner textScanner = new Scanner(dataFile);

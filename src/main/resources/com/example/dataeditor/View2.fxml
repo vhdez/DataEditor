@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dataeditor.Controller2">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dataeditor.Controller2_ListView">
    <children>
       <ListView fx:id="theListView" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="337.0" prefWidth="971.0" />
       <Button fx:id="tableButton" layoutX="937.0" layoutY="357.0" mnemonicParsing="false" onAction="#switchToTableView" style="-fx-background-color: green;" text="Table" textFill="WHITE" />

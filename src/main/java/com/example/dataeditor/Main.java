@@ -2,7 +2,7 @@ package com.example.dataeditor;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Film.readAllData();
+        Film.importDataOnce();
         Film.describeAllFilms();
         System.out.println("Newest film on list is: "+ Film.newest());
         System.out.println("# of objects: " + Film.getAllFilms().size());

@@ -7,10 +7,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightyellow;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dataeditor.Controller1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightyellow;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dataeditor.Controller1_TextFields">
    <children>
       <TextField fx:id="rankText" editable="false" layoutX="206.0" layoutY="47.0" />
-      <TextField fx:id="titleText" layoutX="206.0" layoutY="106.0" onAction="#titleChanged" />
+      <TextField fx:id="titleText" layoutX="206.0" layoutY="106.0" onAction="#titleChanged" onKeyTyped="#titleChanged" />
       <Label layoutX="86.0" layoutY="52.0" text="Rank" />
       <Label layoutX="86.0" layoutY="111.0" text="Title" />
       <Label layoutX="88.0" layoutY="184.0" prefHeight="17.0" prefWidth="84.0" text="Full Text" />

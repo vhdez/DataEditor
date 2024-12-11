@@ -15,7 +15,7 @@ public class SuperController {
     public Button tableButton;
 
     public void initialize() throws Exception {
-        Film.readAllData();
+        Film.importDataOnce();
 
         sceneChoiceBox.getItems().add("Text Fields");
         sceneChoiceBox.getItems().add("List");
