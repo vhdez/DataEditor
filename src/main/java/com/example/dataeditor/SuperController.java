@@ -14,8 +14,27 @@ public class SuperController {
     public Button listButton;
     public Button tableButton;
 
-    public void initialize() throws Exception {
-        Film.importDataOnce();
+    public void initialize() {
+        if (Film.getAllFilms().isEmpty()) {
+            try {
+                // only restore saved Objects ONCE
+                Film.restoreData();
+            } catch (Exception ex) {
+                System.out.println("NO SAVED OBJECTS WERE RESTORED: " + ex);
+            }
+
+            if (Film.getAllFilms().isEmpty()) {
+                try {
+                    // only import films' data if there are NO saved Objects
+                    Film.importDataOnce();
+                    System.out.println("DATA IMPORTED");
+                } catch (Exception ex) {
+                    System.out.println("DATA NOT IMPORTED: " + ex);
+                }
+            } else {
+                System.out.println("SAVED OBJECTS RESTORED");
+            }
+        }
 
         sceneChoiceBox.getItems().add("Text Fields");
         sceneChoiceBox.getItems().add("List");

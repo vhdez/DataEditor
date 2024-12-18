@@ -13,23 +13,31 @@ public class Controller3_TableView extends SuperController {
     public TableColumn<Film, String> fullTextColumn;
 
     // This controls table view
-    public void initialize() throws Exception {
+    public void initialize() {
         super.initialize();
         super.currentSceneChoice = "Table";
         sceneChoiceBox.setValue("Table");
         tableButton.setDisable(true);
         tableButton.setVisible(false);
 
-        // This causes Film's values to be displayed in TableView
+        // TableView Display: get data values into each row/column/cell
         rankColumn.setCellValueFactory(new PropertyValueFactory<>("rank"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         fullTextColumn.setCellValueFactory(new PropertyValueFactory<>("toString"));
 
-        // This causes TableView's values to be editable
+        // TableView Display: detect when a row is selected
+        theTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    // oldValue can be null if nothing WAS selected
+                    // newValue can be null if nothing IS NOW selected
+                    System.out.println("SELECTED ROW FOR: " + newValue);
+                });
+
+        // TableView Edit: when user double-clicks on cell, turn it into a TextField for editing
         rankColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         titleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        // This causes TableView's edited values to stored in original ArrayList objects
+        // TableView Edit: when user is done editing, store new value in selected data object
         rankColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<Film, Integer> t) -> {
                     int selectedRow = t.getTablePosition().getRow();
@@ -43,15 +51,7 @@ public class Controller3_TableView extends SuperController {
                     selectedFilm.setTitle(t.getNewValue());
                 });
 
-        theTable.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    // oldValue can be null if nothing WAS selected
-                    // newValue can be null if nothing IS NOW selected
-                    System.out.println("TableView select oldValue: " + oldValue);
-                    System.out.println("TableView select newValue: " + newValue);
-                });
-
-                    // This makes the TableView's ObservableList contain the SAME objects as the original ArrayList
+        // This makes the TableView's ObservableList contain the SAME objects as the original ArrayList
         for (Film eachFilm : Film.getAllFilms()) {
             theTable.getItems().add(eachFilm);
         }

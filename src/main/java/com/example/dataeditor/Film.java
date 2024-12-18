@@ -5,10 +5,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Film extends Movie {
+public class Film extends Movie implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private int peak;
 
-    private static boolean filmsRead = false;
     private static ArrayList<Film> allFilms = new ArrayList<Film>();
 
     public Film(int rank, String title, long revenue, LocalDate releaseDate, int peak) {
@@ -49,7 +50,7 @@ public class Film extends Movie {
     }
 
     static void importDataOnce() throws Exception {
-        if (filmsRead) {
+        if (allFilms.size() > 0) {
             // Data already read, nothing to do.
             return;
         }
@@ -106,8 +107,6 @@ public class Film extends Movie {
             Film newFilm = new Film(rank, title, revenue, releaseDate, peak);
             allFilms.add(newFilm);
         }
-
-        filmsRead = true;
     }
 
     static void describeAllFilms() {
@@ -115,4 +114,21 @@ public class Film extends Movie {
             System.out.println(eachFilm);
         }
     }
+
+    static void saveData() throws Exception {
+        FileOutputStream fileOut = new FileOutputStream("SavedFilmObjects");
+        ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+        objectOut.writeObject(allFilms);
+        objectOut.close();
+        fileOut.close();
+    }
+
+    static void restoreData() throws Exception {
+        FileInputStream fileIn = new FileInputStream("SavedFilmObjects");
+        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+        allFilms = (ArrayList<Film>)objectIn.readObject();
+        objectIn.close();
+        fileIn.close();
+    }
+
 }

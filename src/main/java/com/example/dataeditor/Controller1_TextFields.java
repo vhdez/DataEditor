@@ -13,12 +13,16 @@ public class Controller1_TextFields extends SuperController {
     public Button previousButton;
     static int currentFilmNumber = 0;
 
-    public void initialize() throws Exception {
+    public void initialize() {
         super.initialize();
         super.currentSceneChoice = "Text Fields";
         sceneChoiceBox.setValue("Text Fields");
         textButton.setDisable(true);
         textButton.setVisible(false);
+
+        if (Film.getAllFilms().isEmpty()) {
+            return;
+        }
 
         Film firstFilm = Film.getAllFilms().get(currentFilmNumber);
         rankText.setText(String.valueOf(firstFilm.getRank()));

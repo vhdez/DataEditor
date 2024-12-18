@@ -17,6 +17,11 @@ public class DataEditor extends Application {
         stage.show();
     }
 
+    @Override
+    public void stop() throws Exception {
+        Film.saveData();
+    }
+
     public static void main(String[] args) {
         launch();
     }
